@@ -16,7 +16,7 @@ def analytics(context):
             t = template.loader.get_template("metron/_%s.html" % kind)
             content += t.render(template.Context({
                 "code": code,
-                "user": context["user"],
+                "user": context.get("user"),
                 "actions": activity.all(context["request"], kind)
             }))
     return content
